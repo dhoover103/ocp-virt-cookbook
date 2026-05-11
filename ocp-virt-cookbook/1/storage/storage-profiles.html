@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Storage Configuration :: OpenShift Virtualization cookbook</title>
-    <link rel="prev" href="../getting-started/virtctl-basics.html">
-    <link rel="next" href="lvm-operator.html">
+    <title>Storage Profiles :: OpenShift Virtualization cookbook</title>
+    <link rel="prev" href="multi-disk-configuration.html">
+    <link rel="next" href="../networking/index.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -74,7 +74,7 @@
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Storage Configuration</a>
 <ul class="nav-list">
@@ -93,7 +93,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="multi-disk-configuration.html">Multi-Disk VMs</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="storage-profiles.html">Storage Profiles</a>
   </li>
 </ul>
@@ -281,6 +281,7 @@
   <ul>
     <li><a href="../index.html">OpenShift Virtualization cookbook</a></li>
     <li><a href="index.html">Storage Configuration</a></li>
+    <li><a href="storage-profiles.html">Storage Profiles</a></li>
   </ul>
 </nav>
 </div>
@@ -289,187 +290,302 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Storage Configuration</h1>
+<h1 class="page">Storage Profiles</h1>
 <div class="sect1">
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This module covers storage configuration for OpenShift Virtualization, including LVM Storage operator, HostPath Provisioner, and troubleshooting storage issues.</p>
-</div>
-<div class="paragraph">
-<p>Proper storage configuration is essential for virtual machine deployments, as VMs require persistent storage for their disks and data.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_learn"><a class="anchor" href="#_what_youll_learn"></a>What You&#8217;ll Learn</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In this section, you will learn:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>How to install and configure the LVM Storage operator for local disk storage</p>
-</li>
-<li>
-<p>How to configure HostPath Provisioner for simple local storage</p>
-</li>
-<li>
-<p>How to set a default storage class for automatic provisioning</p>
-</li>
-<li>
-<p>How to troubleshoot common storage issues</p>
-</li>
-<li>
-<p>Best practices for storage configuration in OpenShift Virtualization</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_storage_options_for_openshift_virtualization"><a class="anchor" href="#_storage_options_for_openshift_virtualization"></a>Storage Options for OpenShift Virtualization</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>OpenShift Virtualization supports various storage backends:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>LVM Storage</strong>: Local disk storage using Logical Volume Manager (covered in this module)</p>
-</li>
-<li>
-<p><strong>HostPath Provisioner</strong>: Simple local storage provisioning (covered in this module)</p>
-</li>
-<li>
-<p><strong>Ceph/ODF</strong>: Distributed block and file storage</p>
-</li>
-<li>
-<p><strong>NFS</strong>: Network-attached storage</p>
-</li>
-<li>
-<p><strong>External storage providers</strong>: AWS EBS, Azure Disk, etc.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This module covers LVM Storage and HostPath Provisioner for local storage scenarios, ideal for Single Node OpenShift (SNO) and bare-metal deployments.</p>
+<p>This tutorial shows how to create, configure, and troubleshoot storage profiles. While generally storage profiles are automatically managed by your CDI controller, there are cases where you might need to create one manually, or the automatically generated profile needs to be updated.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Before proceeding with the tutorials in this section, ensure you have:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift 4.18+ cluster</p>
-</li>
-<li>
-<p>Cluster admin access</p>
-</li>
-<li>
-<p>At least one spare local disk on cluster nodes</p>
-</li>
-<li>
-<p>Basic understanding of Linux storage concepts (LVM, block devices)</p>
+<p>OpenShift CLI installed</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sections"><a class="anchor" href="#_sections"></a>Sections</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a href="lvm-operator.html" class="xref page">Installing LVM Storage Operator</a></dt>
-<dd>
-<p>Step-by-step guide to install and configure the LVM Storage operator with a local disk.</p>
-</dd>
-<dt class="hdlist1"><a href="lvm-troubleshooting.html" class="xref page">Troubleshooting LVM Storage Operator</a></dt>
-<dd>
-<p>Troubleshooting guide for diagnosing and resolving LVM storage issues.</p>
-</dd>
-<dt class="hdlist1"><a href="hostpath-provisioner.html" class="xref page">Local Storage with HostPath Provisioner</a></dt>
-<dd>
-<p>Configure local storage using the HostPath Provisioner for development, testing, and single-node cluster scenarios.</p>
-</dd>
-<dt class="hdlist1"><a href="multi-disk-configuration.html" class="xref page">Multi-Disk VM Configuration with Different Storage Classes</a></dt>
-<dd>
-<p>Configure VMs with multiple disks using different StorageClasses for storage tiering.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_why_default_storage_class_matters"><a class="anchor" href="#_why_default_storage_class_matters"></a>Why Default Storage Class Matters</h2>
+<h2 id="_understanding_storage_profiles_and_their_role"><a class="anchor" href="#_understanding_storage_profiles_and_their_role"></a>Understanding Storage Profiles and Their Role</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Setting a default storage class is critical for OpenShift Virtualization:</p>
+<p>In OpenShift Virtualization, a Storage Profile (StorageProfile) is a custom resource managed by the Containerized Data Importer (CDI). Its primary role is to tell OpenShift Virtualization how to optimally request storage (Persistent Volume Claims or PVCs) for Virtual Machines based on the underlying Storage Class.</p>
+</div>
+<div class="paragraph">
+<p>When you create a VM or clone a disk, OpenShift needs to know:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Boot Source Images</strong>: DataSource OS images require a default storage class</p>
+<p>Should the disk be provisioned as a Filesystem or a raw Block device?</p>
 </li>
 <li>
-<p><strong>Automatic Provisioning</strong>: VMs can be created without explicitly specifying storage</p>
-</li>
-<li>
-<p><strong>Template Support</strong>: VM templates work out-of-the-box</p>
-</li>
-<li>
-<p><strong>Simplified Operations</strong>: Consistent storage provisioning across the cluster</p>
+<p>Can the disk be shared across nodes (ReadWriteMany) to support Live Migration, or is it restricted to a single node (ReadWriteOnce)?</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>See <a href="lvm-operator.html#_step_5_set_default_storageclass" class="xref page">Step 5: Set Default StorageClass</a> in the LVM operator guide for details.</p>
+<p>Instead of forcing developers to specify these details manually every time they deploy a VM, the StorageProfile maps the optimal accessModes and volumeMode to a specific StorageClass.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<h2 id="_default_storage_profile_configuration"><a class="anchor" href="#_default_storage_profile_configuration"></a>Default Storage Profile Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After completing this module, you&#8217;ll be ready to:</p>
+<p>In general, the CDI controller actively monitors your cluster. Whenever a new StorageClass is created (e.g., by your CSI driver like OpenShift Data Foundation/Ceph or a SAN plugin), CDI automatically generates a matching StorageProfile with the exact same name. If the CDI does not configure a storage profile automatically, you will need to create your own.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If CDI doesn&#8217;t recognize your provisioner, it will create a profile with empty strings, and you will see a CDIStorageProfilesIncomplete alert, preventing disk creation until you patch the storage profile.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_storage_profile_parameters"><a class="anchor" href="#_storage_profile_parameters"></a>Storage Profile Parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To customize a storage profile, you define Claim Property Sets (claimPropertySets). These sets represent the preferred configurations when provisioning a PVC for a VM.</p>
+</div>
+<div class="paragraph">
+<p>The two main parameters are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../networking/index.html" class="xref page">Configure networking</a> for your VMs</p>
+<p>volumeMode:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Block</strong>: Provides raw block storage to the VM. (Highly Recommended for VMs). It eliminates the overhead of a filesystem, offering significantly better I/O performance.</p>
 </li>
 <li>
-<p>Create and configure virtual machines</p>
+<p><strong>Filesystem</strong>: The PVC is formatted with a filesystem (like ext4 or xfs). The VM&#8217;s disk is stored as an .img file inside this filesystem.</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>accessModes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ReadWriteMany (RWX)</strong>: The volume can be mounted as read-write by many nodes. (Required for Live Migration).</p>
+</li>
+<li>
+<p><strong>ReadWriteOnce (RWO)</strong>: The volume can be mounted as read-write by a single node. The VM must be powered down to move to another node.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>cloneStrategy</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>copy</strong>: Copies a volume from a source to target pod. The least efficient method of cloning.</p>
+</li>
+<li>
+<p><strong>snapshot</strong>: The CDI will use a temporary snapshot to clone the volume. This only works if the CDI recognizes the storage provider, and it supports snapshots.</p>
+</li>
+<li>
+<p><strong>csi-clone</strong>: Clones a volume without using a temporary snapshot. Only used if specified.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>dataImportCronSourceFormat</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pvc</strong>: Golden images will be stored as PVCs</p>
+</li>
+<li>
+<p><strong>snapshot</strong>: Golden images will be stored as snapshots</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>snapshotClass</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_storageprofile_resource_definition_customization"><a class="anchor" href="#_storageprofile_resource_definition_customization"></a>StorageProfile Resource Definition &amp; Customization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your default StorageProfile is configured for RWO/Filesystem, but you know your backend storage (like Ceph RBD or an NFS share) supports RWX/Block, you should patch the auto-generated profile.</p>
+</div>
+<div class="sect2">
+<h3 id="_example_a_custom_storageprofile_yaml"><a class="anchor" href="#_example_a_custom_storageprofile_yaml"></a>Example: A Custom StorageProfile YAML</h3>
+<div class="paragraph">
+<p>Here is what a customized StorageProfile looks like. In this example, we configure a storage class named ocs-storagecluster-ceph-rbd to prefer Block and ReadWriteMany.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cdi.kubevirt.io/v1beta1
+kind: StorageProfile
+metadata:
+  name: ocs-storagecluster-ceph-rbd
+spec:
+  claimPropertySets:
+  - accessModes:
+    - ReadWriteMany
+    volumeMode: Block
+  - accessModes:
+    - ReadWriteOnce
+    volumeMode: Filesystem
+  cloneStrategy:
+    - csi-clone
+  dataImportCronSourceFormat:
+    - snapshot</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The CDI controller reads the claimPropertySets list from top to bottom. The first set in the array is treated as the primary preference.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_patch_an_existing_profile"><a class="anchor" href="#_how_to_patch_an_existing_profile"></a>How to Patch an Existing Profile:</h3>
+<div class="paragraph">
+<p>Instead of applying a new YAML, you typically patch the existing profile generated by CDI:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch storageprofile &lt;storage_class_name&gt; --type='json' -p='[{"op": "replace", "path": "/spec/claimPropertySets", "value": [{"accessModes": ["ReadWriteMany"], "volumeMode": "Block"}]}]'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verification_commands_and_expected_outputs"><a class="anchor" href="#_verification_commands_and_expected_outputs"></a>Verification Commands and Expected Outputs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>List all storage profiles in the cluster:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get storageprofile
+
+NAME                          AGE
+hostpath-provisioner          10d
+ocs-storagecluster-ceph-rbd   10d
+ocs-storagecluster-cephfs     10d</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the configured properties of a specific profile:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get storageprofile ocs-storagecluster-ceph-rbd -o yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>status:
+  claimPropertySets:
+  - accessModes:
+    - ReadWriteMany
+    volumeMode: Block
+  provisioner: openshift-storage.rbd.csi.ceph.com
+  storageClass: ocs-storagecluster-ceph-rbd</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_troubleshooting_scenarios"><a class="anchor" href="#_common_troubleshooting_scenarios"></a>Common Troubleshooting Scenarios</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_scenario_a_virtual_machine_live_migration_fails"><a class="anchor" href="#_scenario_a_virtual_machine_live_migration_fails"></a>Scenario A: Virtual Machine Live Migration Fails</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Symptom: You attempt to live-migrate a VM, but it is rejected with a "Not migratable" condition or gets stuck in a Paused state.</p>
+</li>
+<li>
+<p>Cause: The VM&#8217;s disk was provisioned as ReadWriteOnce. Live migration requires the destination node to mount the disk before the source node detaches it, which requires ReadWriteMany.</p>
+</li>
+<li>
+<p>Fix: Check oc get storageprofile &lt;storage_class&gt; -o yaml. Ensure that ReadWriteMany is the default in the claimPropertySets. Patch it if necessary, then recreate the VM&#8217;s disk so it inherits the new RWX profile.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scenario_b_cloning_a_vm_fails_or_hangs"><a class="anchor" href="#_scenario_b_cloning_a_vm_fails_or_hangs"></a>Scenario B: Cloning a VM Fails or Hangs</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Symptom: When cloning a VM from a template, the DataVolume gets stuck, and events show "DataVolume.storage spec is missing accessMode and volumeMode, cannot get access mode from StorageProfile".</p>
+</li>
+<li>
+<p>Cause: The StorageProfile for your destination StorageClass has empty or misconfigured claimPropertySets. The cloner doesn&#8217;t know what access mode or volume mode to use.</p>
+</li>
+<li>
+<p>Fix: Explicitly define the claimPropertySets in the StorageProfile. See &lt;link to heading here&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scenario_c_cdistorageprofilesincomplete_alert"><a class="anchor" href="#_scenario_c_cdistorageprofilesincomplete_alert"></a>Scenario C: CDIStorageProfilesIncomplete alert</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Symptom: There is a CDIStorageProfilesIncomplete alert, and virtual disks are not created</p>
+</li>
+<li>
+<p>Cause: The CDI was unable to fill in all the necessary fields for the storage profile</p>
+</li>
+<li>
+<p>Fix: Manually define the missing necessary fields for the storage profile</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_see_also"><a class="anchor" href="#_see_also"></a>See Also</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../getting-started/default-storage-class.html" class="xref page">Configure Default Storage Class</a></p>
-</li>
-<li>
-<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/storage/persistent-storage-using-local-storage#persistent-storage-using-lvms" target="_blank" rel="noopener">OpenShift LVM Storage Documentation</a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/virtualization/storage#virt-configuring-storage-profile" target="_blank" rel="noopener">text</a>.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../getting-started/virtctl-basics.html">Virtctl Basics</a></span>
-  <span class="next"><a href="lvm-operator.html">LVM Operator Installation</a></span>
+  <span class="prev"><a href="multi-disk-configuration.html">Multi-Disk VMs</a></span>
+  <span class="next"><a href="../networking/index.html">Networking Configuration</a></span>
 </nav>
 </article>
   </div>
