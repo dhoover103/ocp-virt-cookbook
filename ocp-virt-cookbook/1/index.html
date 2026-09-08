@@ -15,6 +15,11 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
       <a class="navbar-item" style="font-size: 24px; color: white" href="../..">OpenShift Virtualization cookbook</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs" autofocus>
+        </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -50,10 +55,19 @@
     <a class="nav-link" href="getting-started/index.html">Getting Started</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started/vm-quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="getting-started/prerequisites.html">Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started/architecture-overview.html">Architecture Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="getting-started/install-openshift-virtualization.html">Install OpenShift Virtualization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started/installing-qemu-guest-agent.html">Installing QEMU Guest Agent</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="getting-started/default-storage-class.html">Storage Setup</a>
@@ -62,10 +76,16 @@
     <a class="nav-link" href="getting-started/create-vm-web-console.html">Create VM from Web Console</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started/create-vm-cli-yaml.html">Create VM from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="getting-started/vm-lifecycle-states.html">VM Lifecycle States</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="getting-started/virtctl-basics.html">Virtctl Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started/cloud-init-fundamentals.html">Cloud-init Fundamentals</a>
   </li>
 </ul>
   </li>
@@ -84,6 +104,9 @@
     <a class="nav-link" href="storage/lvm-troubleshooting.html">LVM Troubleshooting</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/odf-ceph-storage.html">ODF/Ceph Storage</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="storage/hostpath-provisioner.html">HostPath Provisioner</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -93,7 +116,13 @@
     <a class="nav-link" href="storage/multi-disk-configuration.html">Multi-Disk VMs</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="storage/storage-profiles.html">Storage Profiles</a>
+    <a class="nav-link" href="storage/expanding-vm-disk-size.html">Expanding VM Disk Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/cdi-operations.html">CDI Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/disk-io-tuning.html">Disk I/O Tuning</a>
   </li>
 </ul>
   </li>
@@ -130,6 +159,18 @@
     <a class="nav-link" href="networking/linux-bridges.html">Linux Bridges</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="networking/sriov-secondary.html">SR-IOV Secondary Networks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="networking/network-policies-vms.html">Network Policies for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="networking/metallb-loadbalancer.html">MetalLB Load Balancer for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="networking/dual-stack-vms.html">Dual-Stack IPv4/IPv6 VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="networking/vm-ingress-routes.html">VM Ingress and Routes</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -158,6 +199,15 @@
     <a class="nav-link" href="vm-configuration/remote-access-windows-vms.html">Remote Access to Windows VMs via RDP</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-configuration/ssh-access-windows-vms.html">Remote Access to Windows VMs via SSH</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-configuration/windows-vm-virtio-drivers.html">Windows VMs with VirtIO Drivers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-configuration/legacy-windows-versions.html">Legacy Windows Versions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vm-configuration/infrastructure-node-placement.html">Infrastructure Node Placement</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -168,6 +218,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vm-configuration/vm-templates.html">Virtual Machine Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-configuration/instancetype-preference.html">Instancetype and Preference</a>
   </li>
 </ul>
   </li>
@@ -191,6 +244,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="performance/realtime-vms.html">Real-Time VMs</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/vm-monitoring-metrics.html">VM Monitoring and Metrics</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -206,6 +262,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vm-lifecycle/custom-golden-images.html">Custom Golden Images</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-lifecycle/windows-golden-images.html">Windows Golden Images</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vm-lifecycle/golden-images-troubleshooting.html">Golden Images Troubleshooting</a>
@@ -238,6 +297,37 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="api/api-component-overview.html">API Component Overview</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="agentic-vm-management/index.html">Agentic VM Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/getting-started.html">Getting Started with rh-virt</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/natural-language-vm-create.html">Natural Language VM Creation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/ai-vm-lifecycle.html">AI VM Lifecycle Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/vm-clone.html">Cloning VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/ai-vm-snapshot-management.html">VM Snapshot Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/ai-skill-chaining.html">Day-2 Skill Chaining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="agentic-vm-management/ai-vm-rebalance.html">VM Rebalancing and Live Migration</a>
   </li>
 </ul>
   </li>
@@ -296,10 +386,10 @@
 <p>A practical field guide for starting and deploying workloads on OpenShift Virtualization.</p>
 </div>
 <div class="paragraph">
-<p>This cookbook provides bite-sized recipes, example manifests, and troubleshooting notes for those who are just starting with OpenShift. It is designed as a hands-on <em>complement</em> to the <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html-single/virtualization/index" target="_blank" rel="noopener">official documentation</a> and <a href="https://www.redhat.com/en/services/training/do316-managing-virtual-machines-red-hat-openshift-virtualization" target="_blank" rel="noopener">training course</a> - facilitating real-world implementation rather than replacing theoretical learning.</p>
+<p>This cookbook provides bite-sized recipes, example manifests, and troubleshooting notes for those who are just starting with OpenShift. It is designed as a hands-on <em>complement</em> to the <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html-single/virtualization/index" target="_blank" rel="noopener">official documentation</a> - facilitating real-world implementation rather than replacing theoretical learning.</p>
 </div>
 <div class="paragraph">
-<p>(<em>last update: 2026-05-11 16:12</em>)</p>
+<p>(<em>last update: 2026-09-08 15:26</em>)</p>
 </div>
 </div>
 </div>
@@ -369,7 +459,26 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/virtualization/about" target="_blank" rel="noopener">OpenShift Virtualization Documentation</a></p>
+<p>OpenShift Virtualization</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/virtualization/about" target="_blank" rel="noopener">Official Documentation</a></p>
+</li>
+<li>
+<p><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization/learn" target="_blank" rel="noopener">Learning hub</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/sites/default/files/attachments/openshift_virtualization_reference_implementation_guide.pdf" target="_blank" rel="noopener">Reference Implementation Guide (pdf)</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/articles/7119411" target="_blank" rel="noopener">Architecture Guide</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/articles/7067871" target="_blank" rel="noopener">Example Architectures</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><a href="https://kubevirt.io/" target="_blank" rel="noopener">KubeVirt Project</a></p>
@@ -435,5 +544,8 @@ This cookbook was created with assistance from AI tools to accelerate content de
   <img src="../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
 </footer><script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
   </body>
 </html>

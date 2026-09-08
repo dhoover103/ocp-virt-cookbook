@@ -16,6 +16,11 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
       <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">OpenShift Virtualization cookbook</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -51,10 +56,19 @@
     <a class="nav-link" href="../getting-started/index.html">Getting Started</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/vm-quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/prerequisites.html">Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/architecture-overview.html">Architecture Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/install-openshift-virtualization.html">Install OpenShift Virtualization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/installing-qemu-guest-agent.html">Installing QEMU Guest Agent</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/default-storage-class.html">Storage Setup</a>
@@ -63,10 +77,16 @@
     <a class="nav-link" href="../getting-started/create-vm-web-console.html">Create VM from Web Console</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/create-vm-cli-yaml.html">Create VM from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/vm-lifecycle-states.html">VM Lifecycle States</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/virtctl-basics.html">Virtctl Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/cloud-init-fundamentals.html">Cloud-init Fundamentals</a>
   </li>
 </ul>
   </li>
@@ -85,6 +105,9 @@
     <a class="nav-link" href="../storage/lvm-troubleshooting.html">LVM Troubleshooting</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/odf-ceph-storage.html">ODF/Ceph Storage</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../storage/hostpath-provisioner.html">HostPath Provisioner</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -94,7 +117,13 @@
     <a class="nav-link" href="../storage/multi-disk-configuration.html">Multi-Disk VMs</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../storage/storage-profiles.html">Storage Profiles</a>
+    <a class="nav-link" href="../storage/expanding-vm-disk-size.html">Expanding VM Disk Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/cdi-operations.html">CDI Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/disk-io-tuning.html">Disk I/O Tuning</a>
   </li>
 </ul>
   </li>
@@ -131,6 +160,18 @@
     <a class="nav-link" href="../networking/linux-bridges.html">Linux Bridges</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/sriov-secondary.html">SR-IOV Secondary Networks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/network-policies-vms.html">Network Policies for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/metallb-loadbalancer.html">MetalLB Load Balancer for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/dual-stack-vms.html">Dual-Stack IPv4/IPv6 VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../networking/vm-ingress-routes.html">VM Ingress and Routes</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -159,6 +200,15 @@
     <a class="nav-link" href="../vm-configuration/remote-access-windows-vms.html">Remote Access to Windows VMs via RDP</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/ssh-access-windows-vms.html">Remote Access to Windows VMs via SSH</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/windows-vm-virtio-drivers.html">Windows VMs with VirtIO Drivers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/legacy-windows-versions.html">Legacy Windows Versions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/infrastructure-node-placement.html">Infrastructure Node Placement</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -169,6 +219,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/vm-templates.html">Virtual Machine Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/instancetype-preference.html">Instancetype and Preference</a>
   </li>
 </ul>
   </li>
@@ -192,6 +245,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="realtime-vms.html">Real-Time VMs</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-monitoring-metrics.html">VM Monitoring and Metrics</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -207,6 +263,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/custom-golden-images.html">Custom Golden Images</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-lifecycle/windows-golden-images.html">Windows Golden Images</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/golden-images-troubleshooting.html">Golden Images Troubleshooting</a>
@@ -239,6 +298,37 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../api/api-component-overview.html">API Component Overview</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../agentic-vm-management/index.html">Agentic VM Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/getting-started.html">Getting Started with rh-virt</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/natural-language-vm-create.html">Natural Language VM Creation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-lifecycle.html">AI VM Lifecycle Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/vm-clone.html">Cloning VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-snapshot-management.html">VM Snapshot Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-skill-chaining.html">Day-2 Skill Chaining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-rebalance.html">VM Rebalancing and Live Migration</a>
   </li>
 </ul>
   </li>
@@ -320,14 +410,6 @@
 <p><strong>Default StorageClass</strong> configured (for VM boot disks)</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Versions tested:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>OpenShift 4.20, 4.21</pre>
-</div>
 </div>
 </div>
 </div>
@@ -854,6 +936,22 @@ EOF</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_qos_tier_overview"><a class="anchor" href="#_qos_tier_overview"></a>QoS Tier Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following diagram illustrates how Kubernetes classifies VMs into three QoS tiers based on their resource configuration and the resulting eviction behavior under memory pressure.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/qos-tiers.png" alt="QoS Tier Diagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Kubernetes assigns the QoS class based on the resource requests and limits on the <code>virt-launcher</code> pod. KubeVirt translates the VM&#8217;s resource specification (CPU and memory defined in <code>spec.domain</code>) into container-level requests and limits, which Kubernetes evaluates for QoS classification. When a ResourceQuota with limits is present in the namespace, KubeVirt automatically sets memory limits using the <code>autoMemoryLimitsRatio</code> multiplier (default 1.0023, configurable per namespace via the <code>alpha.kubevirt.io/auto-memory-limits-ratio</code> label).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_qos_classes_summary"><a class="anchor" href="#_qos_classes_summary"></a>QoS Classes Summary</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
@@ -892,6 +990,68 @@ EOF</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_use_cases"><a class="anchor" href="#_business_use_cases"></a>Business Use Cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Choosing the right QoS class depends on the workload&#8217;s tolerance for eviction, performance requirements, and cluster density goals. The following table maps common workload types to the appropriate QoS configuration.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3335%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Workload Type</th>
+<th class="tableblock halign-left valign-top">QoS Class</th>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Production databases (PostgreSQL, Oracle, MongoDB)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Guaranteed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set requests equal to limits for both CPU and memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database VMs must never be evicted under memory pressure. Predictable performance and data integrity take priority over VM density.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application servers (web, API)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Burstable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set requests to expected steady-state usage, leave limits unset or set higher than requests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application servers benefit from bursting during traffic spikes. Eviction occurs only after all BestEffort pods, which is acceptable for workloads that can tolerate occasional restarts.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Development and test VMs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BestEffort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Omit resource requests and limits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ephemeral VMs that can be recreated quickly if evicted. Maximizes VM density on the cluster for disposable workloads.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Batch processing (ETL, scheduled jobs)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Burstable (high limits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set requests to idle-state usage, limits to peak processing requirement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Batch VMs need to burst during processing windows but can be throttled outside those windows. The scheduler packs nodes efficiently during off-peak hours.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These are starting recommendations. Use <code>oc adm top pods</code> to observe actual resource consumption before committing to a QoS class. Workloads that appear Burstable-appropriate may reveal memory patterns that require Guaranteed placement.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -976,13 +1136,13 @@ EOF</code></pre>
 <p><a href="https://kubevirt.io/user-guide/compute/resources_requests_and_limits/" target="_blank" rel="noopener">KubeVirt Resource Requests and Limits</a></p>
 </li>
 <li>
-<p><a href="https://docs.openshift.com/container-platform/4.18/virt/managing_vms/advanced_vm_management/virt-working-with-resource-quotas-for-vms.html" target="_blank" rel="noopener">Working with Resource Quotas for VMs - OpenShift Documentation</a></p>
+<p><a href="https://docs.openshift.com/container-platform/4.22/virt/managing_vms/advanced_vm_management/virt-working-with-resource-quotas-for-vms.html" target="_blank" rel="noopener">Working with Resource Quotas for VMs - OpenShift Documentation</a></p>
 </li>
 <li>
 <p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/" target="_blank" rel="noopener">Configure QoS for Pods - Kubernetes Documentation</a></p>
 </li>
 <li>
-<p><a href="https://docs.openshift.com/container-platform/4.18/applications/quotas/quotas-setting-per-project.html" target="_blank" rel="noopener">Resource Quotas Per Project - OpenShift Documentation</a></p>
+<p><a href="https://docs.openshift.com/container-platform/4.22/applications/quotas/quotas-setting-per-project.html" target="_blank" rel="noopener">Resource Quotas Per Project - OpenShift Documentation</a></p>
 </li>
 </ul>
 </div>
@@ -1000,5 +1160,8 @@ EOF</code></pre>
   <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
 </footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>

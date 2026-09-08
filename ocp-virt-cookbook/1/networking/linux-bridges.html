@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Creating a Linux Bridge Secondary Network for Virtual Machines :: OpenShift Virtualization cookbook</title>
     <link rel="prev" href="layer2-secondary.html">
-    <link rel="next" href="vm-ingress-routes.html">
+    <link rel="next" href="sriov-secondary.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -16,6 +16,11 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
       <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">OpenShift Virtualization cookbook</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -51,10 +56,19 @@
     <a class="nav-link" href="../getting-started/index.html">Getting Started</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/vm-quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/prerequisites.html">Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/architecture-overview.html">Architecture Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/install-openshift-virtualization.html">Install OpenShift Virtualization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/installing-qemu-guest-agent.html">Installing QEMU Guest Agent</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/default-storage-class.html">Storage Setup</a>
@@ -63,10 +77,16 @@
     <a class="nav-link" href="../getting-started/create-vm-web-console.html">Create VM from Web Console</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/create-vm-cli-yaml.html">Create VM from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/vm-lifecycle-states.html">VM Lifecycle States</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/virtctl-basics.html">Virtctl Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/cloud-init-fundamentals.html">Cloud-init Fundamentals</a>
   </li>
 </ul>
   </li>
@@ -85,6 +105,9 @@
     <a class="nav-link" href="../storage/lvm-troubleshooting.html">LVM Troubleshooting</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/odf-ceph-storage.html">ODF/Ceph Storage</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../storage/hostpath-provisioner.html">HostPath Provisioner</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -94,7 +117,13 @@
     <a class="nav-link" href="../storage/multi-disk-configuration.html">Multi-Disk VMs</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../storage/storage-profiles.html">Storage Profiles</a>
+    <a class="nav-link" href="../storage/expanding-vm-disk-size.html">Expanding VM Disk Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/cdi-operations.html">CDI Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/disk-io-tuning.html">Disk I/O Tuning</a>
   </li>
 </ul>
   </li>
@@ -131,6 +160,18 @@
     <a class="nav-link" href="linux-bridges.html">Linux Bridges</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sriov-secondary.html">SR-IOV Secondary Networks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="network-policies-vms.html">Network Policies for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="metallb-loadbalancer.html">MetalLB Load Balancer for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dual-stack-vms.html">Dual-Stack IPv4/IPv6 VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vm-ingress-routes.html">VM Ingress and Routes</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -159,6 +200,15 @@
     <a class="nav-link" href="../vm-configuration/remote-access-windows-vms.html">Remote Access to Windows VMs via RDP</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/ssh-access-windows-vms.html">Remote Access to Windows VMs via SSH</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/windows-vm-virtio-drivers.html">Windows VMs with VirtIO Drivers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/legacy-windows-versions.html">Legacy Windows Versions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/infrastructure-node-placement.html">Infrastructure Node Placement</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -169,6 +219,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/vm-templates.html">Virtual Machine Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/instancetype-preference.html">Instancetype and Preference</a>
   </li>
 </ul>
   </li>
@@ -192,6 +245,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../performance/realtime-vms.html">Real-Time VMs</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/vm-monitoring-metrics.html">VM Monitoring and Metrics</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -207,6 +263,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/custom-golden-images.html">Custom Golden Images</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-lifecycle/windows-golden-images.html">Windows Golden Images</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/golden-images-troubleshooting.html">Golden Images Troubleshooting</a>
@@ -239,6 +298,37 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../api/api-component-overview.html">API Component Overview</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../agentic-vm-management/index.html">Agentic VM Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/getting-started.html">Getting Started with rh-virt</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/natural-language-vm-create.html">Natural Language VM Creation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-lifecycle.html">AI VM Lifecycle Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/vm-clone.html">Cloning VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-snapshot-management.html">VM Snapshot Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-skill-chaining.html">Day-2 Skill Chaining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-rebalance.html">VM Rebalancing and Live Migration</a>
   </li>
 </ul>
   </li>
@@ -294,14 +384,6 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Versions tested:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>OpenShift 4.20,4.21</pre>
-</div>
-</div>
-<div class="paragraph">
 <p>A Linux bridge secondary network uses the <a href="https://nmstate.io/kubernetes-nmstate/">Kubernetes NMState Operator</a> to create a new Linux bridge device on the cluster nodes,
 and the <a href="https://github.com/k8snetworkplumbingwg/multus-cni" target="_blank" rel="noopener">Multus CNI</a> in conjunction with the <a href="https://www.cni.dev/plugins/current/main/bridge/">bridge CNI plugin</a>
 to connect pods and <code>VirtualMachines</code> (VMs) to the bridge.</p>
@@ -346,7 +428,7 @@ A Linux bridge <code>NetworkAttachmentDefinition</code> is the simplest way to c
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift 4.20+ cluster with OpenShift Virtualization operator installed</p>
+<p>OpenShift 4.18+ cluster with OpenShift Virtualization operator installed</p>
 </li>
 <li>
 <p>NMState operator installed on the cluster</p>
@@ -429,7 +511,7 @@ You can, however control which nodes that the <code>nncp</code> applies to using
 </table>
 </div>
 <div class="paragraph">
-<p>Copy and paste the following <code>NodeNetworkConfigurationPolicy</code> into a new file named <code>lnbr0-bridge.net-attach-def.yaml</code>.
+<p>Copy and paste the following <code>NodeNetworkConfigurationPolicy</code> into a new file named <code>lnbr0-bridge.nncp.yaml</code>.
 To connect to external networks, you&#8217;ll need to uncomment the last two lines, changing the device name to match the secondary or tertiary (if primary &amp; secondary are bonded) device name on the node(s):</p>
 </div>
 <div class="listingblock">
@@ -453,8 +535,8 @@ spec:
             enabled: false
         # Uncomment below and change the interface name
         # to match the desired physical host port
-        #port:
-        #- name: ens1</code></pre>
+        # port:
+        # - name: ens1</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -610,7 +692,7 @@ spec:
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>metadata.name</code></strong>: k8s name of the <code>NetworkAttachmentDefinition</code>.</p>
+<p><strong><code>metadata.name</code></strong>: Kubernetes name of the <code>NetworkAttachmentDefinition</code>.</p>
 </li>
 <li>
 <p><strong><code>metadata.namespace</code></strong>: should match the namespace that the pods/VMs are running in (<code>bridge-demo</code> in this example), but could exist in another namespace.</p>
@@ -652,7 +734,7 @@ spec:
 </ul>
 </div>
 <div class="paragraph">
-<p>More example configurations of the Linux bridge CNI plugin (including several examples which are unsupported in OpenShift Virtualization) are available in the <a href="https://www.cni.dev/plugins/current/main/bridge/" target="_blank" rel="noopener">bridge CNI plugin documentation</a> as well as the official <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/virtualization/networking#virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge" target="_blank" rel="noopener">OpenShift Documentation</a>.</p>
+<p>More example configurations of the Linux bridge CNI plugin (including several examples which are unsupported in OpenShift Virtualization) are available in the <a href="https://www.cni.dev/plugins/current/main/bridge/" target="_blank" rel="noopener">bridge CNI plugin documentation</a> as well as the official <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/virtualization/networking#virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge" target="_blank" rel="noopener">OpenShift Documentation</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -693,7 +775,7 @@ spec:
 </table>
 </div>
 <div class="paragraph">
-<p>Once the file is saved as <code>lnbr0-bridge.net-attach-def.yaml</code> (where <code>net-attach-def</code> is the valid k8s short-name), go ahead and apply the <code>network-attachment-definition</code> to the OpenShift cluster:</p>
+<p>Once the file is saved as <code>lnbr0-bridge.net-attach-def.yaml</code> (where <code>net-attach-def</code> is the valid Kubernetes short-name), go ahead and apply the <code>network-attachment-definition</code> to the OpenShift cluster:</p>
 </div>
 <div class="listingblock execute">
 <div class="content">
@@ -800,11 +882,9 @@ spec:
         devices:
           disks:
           - name: fedora-bridge-demo-root
-            disk:
-              bus: virtio
+            disk: {}
           - name: cloudinitdisk
-            disk:
-              bus: virtio
+            disk: {}
           interfaces:
           - masquerade: {}
             name: default
@@ -832,16 +912,23 @@ spec:
             #cloud-config
             user: fedora
             password: fedora
-            chpasswd: { expire: False }</code></pre>
+            chpasswd:
+              expire: false</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Reviewing specific fields from the above example (all field paths are relative to <code>spec.template.spec</code>):</p>
+<p>Reviewing specific fields from the above example (all field paths are relative to <code>spec</code>):</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>domain.devices.interfaces</code></strong>: lists two interfaces, the primary <code>default</code> and the secondary <code>nic-linux-bridge</code></p>
+<p><strong><code>instancetype</code></strong>: references the <code>u1.large</code> cluster instancetype, which defines CPU and memory resources. This removes the need for inline <code>domain.resources</code> or <code>domain.cpu</code> fields.</p>
+</li>
+<li>
+<p><strong><code>preference</code></strong>: references the <code>fedora</code> cluster preference, which provides Fedora-specific settings such as preferred disk bus types, machine type, and firmware configuration.</p>
+</li>
+<li>
+<p><strong><code>template.spec.domain.devices.interfaces</code></strong>: lists two interfaces, the primary <code>default</code> and the secondary <code>nic-linux-bridge</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -855,7 +942,7 @@ This uses a vm-to-container bridge, whereas the <code>lnbr0</code> bridge connec
 </div>
 </li>
 <li>
-<p><strong><code>networks</code></strong>: list of networks to which the <code>interfaces</code> are attached.</p>
+<p><strong><code>template.spec.networks</code></strong>: list of networks to which the <code>interfaces</code> are attached.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -868,7 +955,7 @@ This uses a vm-to-container bridge, whereas the <code>lnbr0</code> bridge connec
 </div>
 </li>
 <li>
-<p><strong><code>volumes</code></strong>: there are two named volumes: one is the root <code>datavolumedisk</code>, and the other is the <code>cloudinitdisk</code></p>
+<p><strong><code>template.spec.volumes</code></strong>: there are two named volumes: one is the root <code>datavolumedisk</code>, and the other is the <code>cloudinitdisk</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -968,11 +1055,9 @@ spec:
         devices:
           disks:
           - name: fedora-bridge-demo2-root
-            disk:
-              bus: virtio
+            disk: {}
           - name: cloudinitdisk
-            disk:
-              bus: virtio
+            disk: {}
           interfaces:
           - masquerade: {}
             name: default
@@ -1000,7 +1085,8 @@ spec:
             #cloud-config
             user: fedora
             password: fedora
-            chpasswd: { expire: False }</code></pre>
+            chpasswd:
+              expire: false</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1125,7 +1211,7 @@ oc delete namespace bridge-demo</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/virtualization/networking#virt-connecting-vm-to-linux-bridge_virt-connecting-vm-to-linux-bridge" target="_blank" rel="noopener">OpenShift Virtualization - Connecting a VM to a Linux bridge</a></p>
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/virtualization/networking#virt-connecting-vm-to-linux-bridge_virt-connecting-vm-to-linux-bridge" target="_blank" rel="noopener">OpenShift Virtualization - Connecting a VM to a Linux bridge</a></p>
 </li>
 <li>
 <p><a href="https://nmstate.io/devel/yaml_api.html" target="_blank" rel="noopener">NMState API Guide</a></p>
@@ -1136,7 +1222,7 @@ oc delete namespace bridge-demo</code></pre>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="layer2-secondary.html">Layer 2 Secondary Networks</a></span>
-  <span class="next"><a href="vm-ingress-routes.html">VM Ingress and Routes</a></span>
+  <span class="next"><a href="sriov-secondary.html">SR-IOV Secondary Networks</a></span>
 </nav>
 </article>
   </div>
@@ -1146,5 +1232,8 @@ oc delete namespace bridge-demo</code></pre>
   <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
 </footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>

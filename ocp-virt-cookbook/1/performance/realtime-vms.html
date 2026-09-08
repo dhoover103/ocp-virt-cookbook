@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Real-Time Virtual Machines :: OpenShift Virtualization cookbook</title>
     <link rel="prev" href="numa-hugepages.html">
-    <link rel="next" href="../vm-lifecycle/index.html">
+    <link rel="next" href="vm-monitoring-metrics.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -16,6 +16,11 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
       <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">OpenShift Virtualization cookbook</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -51,10 +56,19 @@
     <a class="nav-link" href="../getting-started/index.html">Getting Started</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/vm-quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/prerequisites.html">Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/architecture-overview.html">Architecture Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/install-openshift-virtualization.html">Install OpenShift Virtualization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/installing-qemu-guest-agent.html">Installing QEMU Guest Agent</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/default-storage-class.html">Storage Setup</a>
@@ -63,10 +77,16 @@
     <a class="nav-link" href="../getting-started/create-vm-web-console.html">Create VM from Web Console</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/create-vm-cli-yaml.html">Create VM from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/vm-lifecycle-states.html">VM Lifecycle States</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../getting-started/virtctl-basics.html">Virtctl Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/cloud-init-fundamentals.html">Cloud-init Fundamentals</a>
   </li>
 </ul>
   </li>
@@ -85,6 +105,9 @@
     <a class="nav-link" href="../storage/lvm-troubleshooting.html">LVM Troubleshooting</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/odf-ceph-storage.html">ODF/Ceph Storage</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../storage/hostpath-provisioner.html">HostPath Provisioner</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -94,7 +117,13 @@
     <a class="nav-link" href="../storage/multi-disk-configuration.html">Multi-Disk VMs</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../storage/storage-profiles.html">Storage Profiles</a>
+    <a class="nav-link" href="../storage/expanding-vm-disk-size.html">Expanding VM Disk Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/cdi-operations.html">CDI Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/disk-io-tuning.html">Disk I/O Tuning</a>
   </li>
 </ul>
   </li>
@@ -131,6 +160,18 @@
     <a class="nav-link" href="../networking/linux-bridges.html">Linux Bridges</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/sriov-secondary.html">SR-IOV Secondary Networks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/network-policies-vms.html">Network Policies for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/metallb-loadbalancer.html">MetalLB Load Balancer for VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../networking/dual-stack-vms.html">Dual-Stack IPv4/IPv6 VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../networking/vm-ingress-routes.html">VM Ingress and Routes</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -159,6 +200,15 @@
     <a class="nav-link" href="../vm-configuration/remote-access-windows-vms.html">Remote Access to Windows VMs via RDP</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/ssh-access-windows-vms.html">Remote Access to Windows VMs via SSH</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/windows-vm-virtio-drivers.html">Windows VMs with VirtIO Drivers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/legacy-windows-versions.html">Legacy Windows Versions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/infrastructure-node-placement.html">Infrastructure Node Placement</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -169,6 +219,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-configuration/vm-templates.html">Virtual Machine Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-configuration/instancetype-preference.html">Instancetype and Preference</a>
   </li>
 </ul>
   </li>
@@ -192,6 +245,9 @@
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="realtime-vms.html">Real-Time VMs</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vm-monitoring-metrics.html">VM Monitoring and Metrics</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -207,6 +263,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/custom-golden-images.html">Custom Golden Images</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../vm-lifecycle/windows-golden-images.html">Windows Golden Images</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../vm-lifecycle/golden-images-troubleshooting.html">Golden Images Troubleshooting</a>
@@ -239,6 +298,37 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../api/api-component-overview.html">API Component Overview</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../agentic-vm-management/index.html">Agentic VM Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/getting-started.html">Getting Started with rh-virt</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/natural-language-vm-create.html">Natural Language VM Creation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-lifecycle.html">AI VM Lifecycle Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/vm-clone.html">Cloning VMs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-snapshot-management.html">VM Snapshot Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-skill-chaining.html">Day-2 Skill Chaining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../agentic-vm-management/ai-vm-rebalance.html">VM Rebalancing and Live Migration</a>
   </li>
 </ul>
   </li>
@@ -367,7 +457,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>OpenShift 4.18+ with OpenShift Virtualization operator installed (tested on 4.21)</p>
+<p>OpenShift 4.18+ with OpenShift Virtualization operator installed</p>
 </li>
 <li>
 <p>Cluster admin access (<code>system:admin</code> or equivalent)</p>
@@ -775,7 +865,7 @@ These parameters are aggressive power/latency trade-offs. CPUs on RT nodes will 
 <h2 id="_step_5_deploy_a_real_time_vm"><a class="anchor" href="#_step_5_deploy_a_real_time_vm"></a>Step 5: Deploy a Real-Time VM</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following VM manifest combines all real-time tuning layers. It uses a standard Fedora container disk. While a purpose-built RT guest image with a real-time kernel provides the best results, the standard image is sufficient to demonstrate and verify the host-side configuration.</p>
+<p>The following VM manifest combines all real-time tuning layers. It uses a Fedora DataSource as the boot volume with persistent storage, which allows kernel upgrades and configuration changes to survive VM restarts. While a purpose-built RT guest image with a real-time kernel provides the best results, the standard image is sufficient to demonstrate and verify the host-side configuration.</p>
 </div>
 <div class="paragraph">
 <p>Key configuration fields:</p>
@@ -886,20 +976,42 @@ spec:
       terminationGracePeriodSeconds: 0
       volumes:
       - name: rootdisk
-        containerDisk:
-          image: quay.io/containerdisks/fedora:latest
+        dataVolume:
+          name: vm-realtime
       - name: cloudinitdisk
         cloudInitNoCloud:
           userData: |
             #cloud-config
+            user: fedora
             password: redhat
             chpasswd:
               expire: false
+            ssh_pwauth: true
+  dataVolumeTemplates:
+  - metadata:
+      name: vm-realtime
+    spec:
+      sourceRef:
+        kind: DataSource
+        name: fedora
+        namespace: openshift-virtualization-os-images
+      storage:
+        resources:
+          requests:
+            storage: 30Gi
 EOF</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Wait for the VM to reach Running status:</p>
+<p>The DataVolume clones the Fedora image from the cluster&#8217;s DataSource into a persistent disk. Monitor the provisioning progress:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get dv vm-realtime -n realtime-demo -w</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait until the DataVolume shows <code>Succeeded</code>, then check the VM status:</p>
 </div>
 <div class="listingblock execute">
 <div class="content">
@@ -911,8 +1023,8 @@ EOF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>NAME          AGE   STATUS    READY
-vm-realtime   90s   Running   True</pre>
+<pre>NAME          AGE    STATUS    READY
+vm-realtime   5m     Running   True</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1171,6 +1283,170 @@ Latency results vary significantly based on hardware, BIOS settings, and workloa
 </div>
 </div>
 <div class="sect1">
+<h2 id="_step_9_full_stack_real_time_with_a_guest_rt_kernel"><a class="anchor" href="#_step_9_full_stack_real_time_with_a_guest_rt_kernel"></a>Step 9: Full-Stack Real-Time with a Guest RT Kernel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The cyclictest results from Step 8 show max latencies in the hundreds to thousands of microseconds. This is because the standard Fedora kernel inside the guest uses <code>PREEMPT_DYNAMIC</code> scheduling, which cannot guarantee bounded preemption of in-kernel code paths. The host-side <code>SCHED_FIFO</code> priority and CPU isolation eliminate <strong>external</strong> jitter (other pods, IRQs, kernel threads stealing CPU time), but once a timer interrupt arrives at the vCPU, the <strong>guest kernel</strong> must still wake the sleeping cyclictest thread&#8201;&#8212;&#8201;and a standard kernel may delay that wake-up while finishing a non-preemptible code section.</p>
+</div>
+<div class="paragraph">
+<p>Installing a <code>PREEMPT_RT</code> kernel inside the guest completes the real-time stack. With a guest RT kernel, virtually every kernel code path becomes preemptible, and cyclictest max latencies drop from milliseconds to the low tens of microseconds.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Guest kernel</th>
+<th class="tableblock halign-left valign-top">Expected cyclictest max latency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host RT only</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard (<code>PREEMPT_DYNAMIC</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hundreds to thousands of microseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full-stack RT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real-time (<code>PREEMPT_RT</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Low tens of microseconds</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_install_the_rt_kernel_inside_the_guest"><a class="anchor" href="#_install_the_rt_kernel_inside_the_guest"></a>Install the RT Kernel Inside the Guest</h3>
+<div class="paragraph">
+<p>Connect to the running VM:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">virtctl console vm-realtime -n realtime-demo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Log in as <code>fedora</code> with password <code>redhat</code>.</p>
+</div>
+<div class="paragraph">
+<p>Enable the Fedora Kernel Vanilla COPR repository, which provides <code>PREEMPT_RT</code> kernel packages:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo dnf -y copr enable @kernel-vanilla/stable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install the real-time kernel:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo dnf -y install kernel-rt-core kernel-rt-modules</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Set the RT kernel as the default boot entry:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo grubby --set-default /boot/vmlinuz-*rt*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Disconnect from the console by pressing <code>Ctrl+]</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reboot_the_vm"><a class="anchor" href="#_reboot_the_vm"></a>Reboot the VM</h3>
+<div class="paragraph">
+<p>Restart the VM to boot into the RT kernel:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">virtctl restart vm-realtime -n realtime-demo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait for the VM to return to Running status:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get vm vm-realtime -n realtime-demo -w</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verify_the_guest_rt_kernel"><a class="anchor" href="#_verify_the_guest_rt_kernel"></a>Verify the Guest RT Kernel</h3>
+<div class="paragraph">
+<p>Connect to the VM console:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">virtctl console vm-realtime -n realtime-demo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Log in and verify the kernel version:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">uname -r</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should contain <code>rt</code> in the version string, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>6.15.2-0.rc0.20250604gite53b1bae1f73.502.vanilla.fc42.x86_64+rt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verify that <code>PREEMPT_RT</code> is active:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">uname -v</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should include <code>PREEMPT_RT</code>, confirming fully preemptible kernel mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_re_run_cyclictest_with_the_rt_kernel"><a class="anchor" href="#_re_run_cyclictest_with_the_rt_kernel"></a>Re-Run cyclictest with the RT Kernel</h3>
+<div class="paragraph">
+<p>Since the VM uses persistent storage, <code>realtime-tests</code> is still installed from Step 8. Run cyclictest with the same parameters:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --duration=60</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the guest RT kernel, expect max latencies in the low tens of microseconds&#8201;&#8212;&#8201;a significant improvement over the hundreds to thousands of microseconds seen with the standard kernel in Step 8.</p>
+</div>
+<div class="paragraph">
+<p>Disconnect from the console by pressing <code>Ctrl+]</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+For production real-time workloads, build a custom disk image with the RT kernel pre-installed rather than installing it at runtime. This eliminates the post-boot kernel installation and reboot cycle, and guarantees consistent, version-locked deployments across all RT VMs.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -1340,7 +1616,10 @@ Deleting the PerformanceProfile and MachineConfigPool triggers a reboot to rever
 <p>Measure and baseline latency using <code>cyclictest</code></p>
 </li>
 <li>
-<p>Understand the role of each configuration layer in eliminating specific sources of jitter</p>
+<p>Install a guest RT kernel to achieve full-stack real-time and compare latency results</p>
+</li>
+<li>
+<p>Understand the difference between host-only RT tuning and full-stack RT (host + guest RT kernel)</p>
 </li>
 </ul>
 </div>
@@ -1364,10 +1643,10 @@ Deleting the PerformanceProfile and MachineConfigPool triggers a reboot to rever
 <p><a href="https://kubevirt.io/user-guide/compute/numa/#running-real-time-workloads" target="_blank" rel="noopener">KubeVirt Real-Time Workloads</a></p>
 </li>
 <li>
-<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/scalability_and_performance/cnf-tuning-low-latency-nodes-with-perf-profile" target="_blank" rel="noopener">Tuning Nodes for Low Latency - OpenShift Documentation</a></p>
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/scalability_and_performance/cnf-tuning-low-latency-nodes-with-perf-profile" target="_blank" rel="noopener">Tuning Nodes for Low Latency - OpenShift Documentation</a></p>
 </li>
 <li>
-<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/scalability_and_performance/cnf-provisioning-low-latency-workloads" target="_blank" rel="noopener">Provisioning Real-Time Workloads - OpenShift Documentation</a></p>
+<p><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/scalability_and_performance/cnf-provisioning-low-latency-workloads" target="_blank" rel="noopener">Provisioning Real-Time Workloads - OpenShift Documentation</a></p>
 </li>
 <li>
 <p><a href="https://www.libvirt.org/kbase/kvm-realtime.html" target="_blank" rel="noopener">KVM Real-Time Tuning - libvirt</a></p>
@@ -1378,7 +1657,7 @@ Deleting the PerformanceProfile and MachineConfigPool triggers a reboot to rever
 </div>
 <nav class="pagination">
   <span class="prev"><a href="numa-hugepages.html">NUMA and Hugepages</a></span>
-  <span class="next"><a href="../vm-lifecycle/index.html">VM Lifecycle Management</a></span>
+  <span class="next"><a href="vm-monitoring-metrics.html">VM Monitoring and Metrics</a></span>
 </nav>
 </article>
   </div>
@@ -1388,5 +1667,8 @@ Deleting the PerformanceProfile and MachineConfigPool triggers a reboot to rever
   <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
 </footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>
